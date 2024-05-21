@@ -23,7 +23,7 @@ public class Book {
     private String publisher;
 
     //Costruttore
-    Book(String title,int pages, String author,String publisher){
+    Book(String title,int pages, String author,String publisher) throws IllegalArgumentException{
         setTitle(title);
         setPages(pages);
         setAuthor(author);
@@ -35,10 +35,8 @@ public class Book {
         return this.title;
     }
     //Setter per l'attributo title
-    public void setTitle(String newTitle){
-        if(newTitle.trim().isEmpty()){
-            throw new IllegalArgumentException("Il campo non può essere vuoto");
-        }
+    public void setTitle(String newTitle) throws IllegalArgumentException{
+        checkValue(newTitle,"title");
          this.title = newTitle;
     }
 
@@ -47,8 +45,8 @@ public class Book {
         return this.pages;
     }
     //Setter per l'attributo pages
-    public void setPages(int newPages){
-        if (pages <= 0){
+    public void setPages(int newPages) throws IllegalArgumentException{
+        if (newPages <= 0){
             throw new IllegalArgumentException("Il numero di pagine deve essere un numero maggiore di 0");
         }
         this.pages = newPages;
@@ -59,11 +57,8 @@ public class Book {
         return this.author;
     }
     //Setter per l'attributo author
-    public void setAuthor(String newAuthor){
-        if (author.trim().isEmpty()){
-            throw new IllegalArgumentException("Il campo non può essere vuoto");
-
-        }
+    public void setAuthor(String newAuthor) throws IllegalArgumentException{
+        checkValue(newAuthor,"author");
         this.author = newAuthor;
     }
 
@@ -72,11 +67,16 @@ public class Book {
         return this.publisher;
     }
     //Setter per l'attributo publisher
-    public void setPublisher(String newPublisher){
-        if (publisher.trim().isEmpty()){
-            throw new IllegalArgumentException("Il campo non può essere vuoto");
-        }
+    public void setPublisher(String newPublisher) throws IllegalArgumentException{
+        checkValue(newPublisher,"publisher");
         this.publisher = newPublisher;
+    }
+
+    //Metodo per controllare che il campo non sia vuoto
+    private void checkValue(String value,String type) throws IllegalArgumentException{
+        if(value.trim().isEmpty()){
+            throw new IllegalArgumentException("Il campo " + type + " non può essere vuoto");
+        }
     }
 
     // Sovrascrivo il metodo toString()
