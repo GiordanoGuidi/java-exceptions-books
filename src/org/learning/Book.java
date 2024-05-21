@@ -21,12 +21,49 @@ public class Book {
     private int pages;
     private String author;
     private String publisher;
+
     //Costruttore
     Book(String title,int pages, String author,String publisher){
         this.title=title;
         this.pages=pages;
         this.author=author;
         this.publisher=publisher;
+    }
+
+    //Getter per l'attributo title
+    public String getTitle(){
+        return this.title;
+    }
+    //Setter per l'attributo title
+    public void setTitle(String newTitle){
+         this.title = newTitle;
+    }
+
+    //Getter per l'attributo pages
+    public int getPages(){
+        return this.pages;
+    }
+    //Setter per l'attributo pages
+    public void setPages(int newPages){
+        this.pages = newPages;
+    }
+
+    //Getter per l'attributo author
+    public String getAuthor(){
+        return this.author;
+    }
+    //Setter per l'attributo author
+    public void setAuthor(String newAuthor){
+        this.author = newAuthor;
+    }
+
+    //Getter per l'attributo publisher
+    public String getPublisher(){
+        return this.publisher;
+    }
+    //Setter per l'attributo publisher
+    public void setPublisher(String newPublisher){
+        this.publisher = newPublisher;
     }
 
     // Sovrascrivo il metodo toString()
