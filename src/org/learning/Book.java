@@ -24,10 +24,10 @@ public class Book {
 
     //Costruttore
     Book(String title,int pages, String author,String publisher){
-        this.title=title;
-        this.pages=pages;
-        this.author=author;
-        this.publisher=publisher;
+        setTitle(title);
+        setPages(pages);
+        setAuthor(author);
+        setPublisher(publisher);
     }
 
     //Getter per l'attributo title
@@ -36,6 +36,9 @@ public class Book {
     }
     //Setter per l'attributo title
     public void setTitle(String newTitle){
+        if(newTitle.trim().isEmpty()){
+            throw new IllegalArgumentException("Il campo non può essere vuoto");
+        }
          this.title = newTitle;
     }
 
@@ -45,6 +48,9 @@ public class Book {
     }
     //Setter per l'attributo pages
     public void setPages(int newPages){
+        if (pages <= 0){
+            throw new IllegalArgumentException("Il numero di pagine deve essere un numero maggiore di 0");
+        }
         this.pages = newPages;
     }
 
@@ -54,6 +60,10 @@ public class Book {
     }
     //Setter per l'attributo author
     public void setAuthor(String newAuthor){
+        if (author.trim().isEmpty()){
+            throw new IllegalArgumentException("Il campo non può essere vuoto");
+
+        }
         this.author = newAuthor;
     }
 
@@ -63,6 +73,9 @@ public class Book {
     }
     //Setter per l'attributo publisher
     public void setPublisher(String newPublisher){
+        if (publisher.trim().isEmpty()){
+            throw new IllegalArgumentException("Il campo non può essere vuoto");
+        }
         this.publisher = newPublisher;
     }
 

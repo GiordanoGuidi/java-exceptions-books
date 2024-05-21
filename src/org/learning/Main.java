@@ -14,7 +14,7 @@ public class Main {
             if (arrayLength <= 0){
                 throw new IllegalArgumentException("Deve essere un numero maggiore di 0");
             }
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
         //Definisco la lunghezza dell'array
@@ -33,10 +33,10 @@ public class Main {
             System.out.println("Quate pagina ha?");
             int pages = Integer.parseInt(scanner.nextLine());
             try {
-                if (pages <=0){
-                    throw new IllegalArgumentException("Il numero deve essre maggiore di 0");
+                if (pages <= 0){
+                   throw new IllegalArgumentException("Il numero di pagine deve essere un numero maggiore di 0");
                 }
-            } catch (IllegalArgumentException e) {
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
             System.out.println("Chi è l'autore");
@@ -58,14 +58,10 @@ public class Main {
                 System.out.println(e.getMessage());
             }
             books[i]= new Book(title,pages,author,publisher);
+            books[i].setPages(0);
         }
 
         System.out.println(Arrays.toString(books));
-
-
-
-
-
         scanner.close();
 
 
