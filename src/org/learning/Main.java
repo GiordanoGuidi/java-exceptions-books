@@ -1,5 +1,9 @@
 package org.learning;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -55,7 +59,47 @@ public class Main {
                 }
             }
         }
-        System.out.println(Arrays.toString(books));
-        scanner.close();
+        File file = new File("./resources/data.txt");
+        writeToFile(file, books);
+        readFile(file);
+    }
+    //Metodo per leggere il testo del file
+    public static void readFile(File file){
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(file);
+            //Itero su tutte le righe del file
+            while (scanner.hasNextLine()){
+                String line= scanner.nextLine();
+                System.out.println(line);
+            }
+        }
+        //Gestisco l'eccezione che il file non venga trovato
+        catch (FileNotFoundException e) {
+            System.out.println("Unable to read");
+        }finally {
+            if (scanner != null){
+                //Chiudo lo scanner
+                scanner.close();
+            }
+        }
+    }
+    //Metodo per scrivere nel file
+    private static void writeToFile(File file, Book[] books) {
+        FileWriter fileWriter=null;
+        try{
+            fileWriter = new FileWriter(file);
+            fileWriter.write(Arrays.toString(books));
+        }catch (IOException e){
+            System.out.println("Unable to open file writer");
+        }finally {
+            if (fileWriter != null){
+                try {
+                    fileWriter.close();
+                }catch (IOException e){
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 }
