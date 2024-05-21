@@ -28,4 +28,11 @@ public class Book {
         this.author=author;
         this.publisher=publisher;
     }
+
+    // Sovrascrivo il metodo toString()
+    @Override
+    public String toString() {
+        return "Book[title=" + title + ", pages=" + pages + ", " +
+                "author=" + author + ", publisher=" + publisher + "]" ;
+    }
 }
