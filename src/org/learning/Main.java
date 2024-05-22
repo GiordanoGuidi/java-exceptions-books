@@ -86,15 +86,19 @@ public class Main {
     }
     //Metodo per scrivere nel file
     private static void writeToFile(File file, Book[] books) {
+        //Inizializzo fileWriter
         FileWriter fileWriter=null;
         try{
+            //Istanzio fileWriter
             fileWriter = new FileWriter(file);
+            //Scrivo il contenuto dell'array books nel file
             fileWriter.write(Arrays.toString(books));
         }catch (IOException e){
             System.out.println("Unable to open file writer");
         }finally {
             if (fileWriter != null){
                 try {
+                    //Chiudo il fileWriter
                     fileWriter.close();
                 }catch (IOException e){
                     throw new RuntimeException(e);
